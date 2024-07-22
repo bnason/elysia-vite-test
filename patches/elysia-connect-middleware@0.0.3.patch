@@ -1,0 +1,16 @@
+diff --git a/dist/index.js b/dist/index.js
+index 92d73a8d2ac7aecdd66ccde7c7661415c07f07cb..2dcc7bb692450654f7f22fd5c8bf9ff41c58ff30 100755
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -47,7 +47,10 @@ function connect(...middlewares) {
+       response.end = (...args) => {
+         const call = end.call(response, ...args);
+         const webResponse = transformResponseToServerResponse(response);
+-        resolve(webResponse);
++        if (webResponse.status !== 404)
++          resolve(webResponse);
++        else
++          resolve()
+         return call;
+       };
+       connectApp.handle(message, response, () => {

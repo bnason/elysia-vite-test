@@ -6,10 +6,18 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@vitejs/plugin-vue": "5.0.5",
+    "elysia": "latest",
+    "elysia-vite-server": "0.0.1",
+    "vite": "5.3.4",
+    "vite-svg-loader": "5.1.0",
+    "vue": "3.4.33"
   },
   "devDependencies": {
     "bun-types": "latest"
   },
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "patchedDependencies": {
+    "elysia-connect-middleware@0.0.3": "patches/elysia-connect-middleware@0.0.3.patch"
+  }
 }
